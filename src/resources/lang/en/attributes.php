@@ -14,12 +14,12 @@ return [
         'method' => 'Method',
         'body' => 'body',
         'body_help' => 'to embed form values in text use the following pattern [field_name*]
-                       . <br/>* field_name: field name attribute in form builder'
+                       . <br/>* field_name: field name attribute in form builder',
 
     ],
     'store_in_database' => [
         'unique_field' => 'Unique identifier field',
-        'database_help' => 'This field will be used to avoid duplicates, if not filled there will be no duplication detection.'
+        'database_help' => 'This field will be used to avoid duplicates, if not filled there will be no duplication detection.',
     ],
     'general_fields' => [
         'list' => 'List',
@@ -46,7 +46,7 @@ return [
         ],
         'covert_commission' => [
             'api_key' => 'API Key',
-        ]
+        ],
 
     ],
     'form' => [
@@ -57,14 +57,14 @@ return [
         'is_public' => 'Is Public',
         'is_public_form' => 'Is Public Form',
         'embed_form' => 'Embed Form',
-        'short_code' => 'Shortcode'
+        'short_code' => 'Shortcode',
     ],
     'form_submission' => [
         'action' => 'Action',
         'action_type' => [
             'show_message' => 'Show Message',
-            'redirect_to' => 'Redirect to'
+            'redirect_to' => 'Redirect to',
         ],
         'content' => 'Content',
-    ]
+    ],
 ];

@@ -10,7 +10,7 @@ use Corals\Settings\Models\Setting;
 class UninstallModuleServiceProvider extends BaseUninstallModuleServiceProvider
 {
     protected $migrations = [
-        CreateFormsTable::class
+        CreateFormsTable::class,
     ];
 
     protected function providerBooted()

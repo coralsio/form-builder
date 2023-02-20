@@ -18,13 +18,13 @@ class FormBuilder
     /**
      * FormBuilder constructor.
      */
-    function __construct()
+    public function __construct()
     {
     }
 
     public function fillActionData($action, $data)
     {
-        if (!$action) {
+        if (! $action) {
             abort(400);
         }
 
@@ -104,7 +104,7 @@ class FormBuilder
                 return response()->json([
                     'message' => $success_submission_content,
                     'class' => 'alert-success',
-                    'level' => 'success'
+                    'level' => 'success',
                 ]);
             } elseif ($success_submission_action == 'redirect_to') {
                 return redirectTo($success_submission_content);
@@ -116,15 +116,17 @@ class FormBuilder
             if ($failure_submission_action == 'show_message') {
                 logger($exception->getTraceAsString());
                 $failure_submission_content .= '<br/>' . $exception->getMessage();
+
                 return response()->json(['message' => $failure_submission_content, 'class' => 'alert-danger'], 422);
             } elseif ($failure_submission_action == 'redirect_to') {
                 logger($exception->getTraceAsString());
+
                 return redirectTo($failure_submission_content);
             }
 
             return response()->json([
                 'message' => trans('FormBuilder::exception.form_builder.something_went_wrong'),
-                'class' => 'alert-danger'
+                'class' => 'alert-danger',
             ], 422);
         }
     }
@@ -153,7 +155,6 @@ class FormBuilder
 
         Aweber::subscribe($email, $name, $list);
     }
-
 
     /**
      * @param $action
@@ -204,7 +205,6 @@ class FormBuilder
 
         CovertCommissions::subscribe($email, $name, $list);
     }
-
 
     /**
      * @param $action
@@ -301,14 +301,17 @@ class FormBuilder
             $attachments = $this->attachments;
         }
 
-        Mail::send('FormBuilder::emails.submission_email_template', compact('body'),
+        Mail::send(
+            'FormBuilder::emails.submission_email_template',
+            compact('body'),
             function (Message $message) use ($to, $subject, $attachments) {
                 $message->to($to)
                     ->subject($subject);
                 foreach ($attachments as $attachment) {
                     $message->attach($attachment);
                 }
-            });
+            }
+        );
     }
 
     /**
@@ -341,7 +344,7 @@ class FormBuilder
             $httpResponse = $httpClient->request($method, $end_point . '?' . http_build_query($body));
         } else {
             $httpResponse = $httpClient->request($method, $end_point, [
-                'json' => $body
+                'json' => $body,
             ]);
         }
 
@@ -363,17 +366,19 @@ class FormBuilder
         $unique_field = Arr::get($action, 'unique_field');
 
         $submissionData = [
-            'unique_identifier' => null
+            'unique_identifier' => null,
         ];
 
-        if (!empty($unique_field)) {
+        if (! empty($unique_field)) {
             $unique_field_data = Arr::get($data, $unique_field, null);
 
             $unique_submission = $form->submissions()->where('unique_identifier', $unique_field_data)->first();
 
-            if (!$unique_field_data || $unique_submission) {
-                throw new \Exception(trans('FormBuilder::exception.form_builder.unique_is_required',
-                    ['unique' => $unique_field]));
+            if (! $unique_field_data || $unique_submission) {
+                throw new \Exception(trans(
+                    'FormBuilder::exception.form_builder.unique_is_required',
+                    ['unique' => $unique_field]
+                ));
             }
 
             $submissionData['unique_identifier'] = $unique_field_data;
@@ -460,7 +465,7 @@ class FormBuilder
                         'radio-group',
                         'select',
                         'textarea',
-                        'starRating'
+                        'starRating',
                     ]));
             } else {
                 $elementShowInListing = Arr::get($element, 'showInListing', false);
@@ -475,13 +480,14 @@ class FormBuilder
                         'radio-group',
                         'select',
                         'textarea',
-                        'starRating'
+                        'starRating',
                     ]) && ($elementShowInListing === $showOnListState));
             }
         });
 
         $unLabeledContent = $content->filter(function ($element) {
             $type = Arr::get($element, 'type', false);
+
             return ($type && in_array($type, ['hidden']));
         });
 
@@ -502,6 +508,7 @@ class FormBuilder
 
         $inputContent = $content->filter(function ($element) {
             $type = Arr::get($element, 'type', false);
+
             return ($type && in_array($type, [
                     'text',
                     'autocomplete',
@@ -513,7 +520,7 @@ class FormBuilder
                     'select',
                     'textarea',
                     'starRating',
-                    'hidden'
+                    'hidden',
                 ]));
         });
 
@@ -529,9 +536,10 @@ class FormBuilder
     {
         $code = '<div data-embed-src="' . url('forms/' . $form->hashed_id . '/embed') . '"></div><script type="text/javascript" src="' . asset('assets/corals/plugins/formbuilder/js/embed.js') . '"></script>';
 
-        return '<pre><code id="embed_' . $form->id . '">' . htmlentities($code, ENT_COMPAT,
-                'UTF-8') . '</code> <a href="#" onclick="event.preventDefault();" class="copy-button"data-clipboard-target="#embed_' . $form->id . '"><i class="fa fa-clipboard"></i></a></pre>';
+        return '<pre><code id="embed_' . $form->id . '">' . htmlentities(
+            $code,
+            ENT_COMPAT,
+            'UTF-8'
+        ) . '</code> <a href="#" onclick="event.preventDefault();" class="copy-button"data-clipboard-target="#embed_' . $form->id . '"><i class="fa fa-clipboard"></i></a></pre>';
     }
-
-
 }

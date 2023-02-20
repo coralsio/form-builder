@@ -10,7 +10,7 @@ use Corals\Modules\FormBuilder\database\seeds\FormBuilderDatabaseSeeder;
 class InstallModuleServiceProvider extends BaseInstallModuleServiceProvider
 {
     protected $migrations = [
-        CreateFormsTable::class
+        CreateFormsTable::class,
     ];
     protected $module_public_path = __DIR__ . '/../public';
 
@@ -67,6 +67,5 @@ class InstallModuleServiceProvider extends BaseInstallModuleServiceProvider
                 'updated_at' => Carbon::now(),
             ],
         ]);
-
     }
 }

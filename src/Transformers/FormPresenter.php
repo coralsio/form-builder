@@ -6,7 +6,6 @@ use Corals\Foundation\Transformers\FractalPresenter;
 
 class FormPresenter extends FractalPresenter
 {
-
     /**
      * @return FormTransformer
      */

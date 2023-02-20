@@ -37,7 +37,7 @@ class FormSubmissionsDataTable extends BaseDataTable
      */
     public function query(FormSubmission $model)
     {
-        if (!$this->form) {
+        if (! $this->form) {
             abort('404');
         }
 

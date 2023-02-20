@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\FormBuilder\Classes;
 
-
 class GetResponseApi
 {
     private $api_key;
@@ -31,7 +30,7 @@ class GetResponseApi
     {
         $this->api_key = $api_key;
 
-        if (!empty($api_url)) {
+        if (! empty($api_url)) {
             $this->api_url = $api_url;
         }
     }
@@ -41,7 +40,7 @@ class GetResponseApi
      * @param $key
      * @param $value
      */
-    function __set($key, $value)
+    public function __set($key, $value)
     {
         $this->{$key} = $value;
     }
@@ -145,7 +144,6 @@ class GetResponseApi
         return $this->call('contacts/' . $contact_id);
     }
 
-
     /**
      * search contacts
      *
@@ -206,7 +204,7 @@ class GetResponseApi
      *
      * @return mixed
      */
-    public function getContacts($params = array())
+    public function getContacts($params = [])
     {
         return $this->call('contacts?' . $this->setParams($params));
     }
@@ -218,7 +216,7 @@ class GetResponseApi
      *
      * @return mixed
      */
-    public function updateContact($contact_id, $params = array())
+    public function updateContact($contact_id, $params = [])
     {
         return $this->call('contacts/' . $contact_id, 'POST', $params);
     }
@@ -240,7 +238,7 @@ class GetResponseApi
      *
      * @return mixed
      */
-    public function getCustomFields($params = array())
+    public function getCustomFields($params = [])
     {
         return $this->call('custom-fields?' . $this->setParams($params));
     }
@@ -294,7 +292,7 @@ class GetResponseApi
      *
      * @return mixed
      */
-    public function getWebForms($params = array())
+    public function getWebForms($params = [])
     {
         return $this->call('webforms?' . $this->setParams($params));
     }
@@ -316,7 +314,7 @@ class GetResponseApi
      *
      * @return mixed
      */
-    public function getForms($params = array())
+    public function getForms($params = [])
     {
         return $this->call('forms?' . $this->setParams($params));
     }
@@ -330,21 +328,21 @@ class GetResponseApi
      * @return mixed
      * @throws Exception
      */
-    private function call($api_method = null, $http_method = 'GET', $params = array())
+    private function call($api_method = null, $http_method = 'GET', $params = [])
     {
         if (empty($api_method)) {
-            return (object)array(
+            return (object)[
                 'httpStatus' => '400',
                 'code' => '1010',
                 'codeDescription' => 'Error in external resources',
-                'message' => 'Invalid api method'
-            );
+                'message' => 'Invalid api method',
+            ];
         }
 
         $params = json_encode($params);
         $url = $this->api_url . '/' . $api_method;
 
-        $options = array(
+        $options = [
             CURLOPT_URL => $url,
             CURLOPT_ENCODING => 'gzip,deflate',
             CURLOPT_FRESH_CONNECT => 1,
@@ -352,22 +350,22 @@ class GetResponseApi
             CURLOPT_TIMEOUT => $this->timeout,
             CURLOPT_HEADER => false,
             CURLOPT_USERAGENT => 'PHP GetResponse client 0.0.2',
-            CURLOPT_HTTPHEADER => array('X-Auth-Token: api-key ' . $this->api_key, 'Content-Type: application/json'),
-            CURLOPT_SSL_VERIFYPEER => 0
-        );
+            CURLOPT_HTTPHEADER => ['X-Auth-Token: api-key ' . $this->api_key, 'Content-Type: application/json'],
+            CURLOPT_SSL_VERIFYPEER => 0,
+        ];
 
-        if (!empty($this->enterprise_domain)) {
+        if (! empty($this->enterprise_domain)) {
             $options[CURLOPT_HTTPHEADER][] = 'X-Domain: ' . $this->enterprise_domain;
         }
 
-        if (!empty($this->app_id)) {
+        if (! empty($this->app_id)) {
             $options[CURLOPT_HTTPHEADER][] = 'X-APP-ID: ' . $this->app_id;
         }
 
         if ($http_method == 'POST') {
             $options[CURLOPT_POST] = 1;
             $options[CURLOPT_POSTFIELDS] = $params;
-        } else if ($http_method == 'DELETE') {
+        } elseif ($http_method == 'DELETE') {
             $options[CURLOPT_CUSTOMREQUEST] = 'DELETE';
         }
 
@@ -379,6 +377,7 @@ class GetResponseApi
         $this->http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         curl_close($curl);
+
         return (object)$response;
     }
 
@@ -387,15 +386,15 @@ class GetResponseApi
      *
      * @return string
      */
-    private function setParams($params = array())
+    private function setParams($params = [])
     {
-        $result = array();
+        $result = [];
         if (is_array($params)) {
             foreach ($params as $key => $value) {
                 $result[$key] = $value;
             }
         }
+
         return http_build_query($result);
     }
-
 }

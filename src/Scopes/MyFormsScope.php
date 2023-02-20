@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Scope;
 
 class MyFormsScope implements Scope
 {
-
     /**
      * Apply the scope to a given Eloquent query builder.
      *
@@ -20,7 +19,7 @@ class MyFormsScope implements Scope
     {
         $user = user();
 
-        if ($user && !$user->hasPermissionTo('FormBuilder::form.access_all_forms')) {
+        if ($user && ! $user->hasPermissionTo('FormBuilder::form.access_all_forms')) {
             $builder->where('created_by', $user->id);
         }
     }

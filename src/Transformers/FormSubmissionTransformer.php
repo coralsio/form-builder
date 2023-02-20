@@ -27,7 +27,7 @@ class FormSubmissionTransformer extends BaseTransformer
             'id' => $formSubmission->id,
             'created_at' => format_date($formSubmission->created_at),
             'updated_at' => format_date($formSubmission->updated_at),
-            'action' => $this->actions($formSubmission)
+            'action' => $this->actions($formSubmission),
         ];
 
         $form_inputs = collect(\FormBuilder::getFormFieldsLabel($form));
@@ -36,6 +36,7 @@ class FormSubmissionTransformer extends BaseTransformer
 
         $form_data = $form_inputs->mapWithKeys(function ($item) use ($form_inputs, $formSubmission_content) {
             $value = \Arr::get($formSubmission_content, array_search($item, $form_inputs->toArray()), '-');
+
             return [array_search($item, $form_inputs->toArray()) => $value];
         });
 

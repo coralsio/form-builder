@@ -15,8 +15,8 @@ return [
                     'href_pattern' => ['pattern' => '[arg]', 'replace' => ['return $object->getShowUrl();']],
                     'label_pattern' => ['pattern' => '[arg]', 'replace' => ["return trans('FormBuilder::labels.form.submission.show');"]],
                     'data' => [],
-                ]
-            ]
+                ],
+            ],
 
         ],
         'form' => [
@@ -29,7 +29,7 @@ return [
                     'label_pattern' => ['pattern' => '[arg]', 'replace' => ["return trans('FormBuilder::labels.form.submission.title');"]],
                     'policies' => ['submissions'],
                     'data' => [],
-                ]
+                ],
             ],
             'form_actions' => [
                 'email' => [
@@ -45,7 +45,7 @@ return [
                             'value' => null,
                             'attributes' => [
                                 'help_text' => 'FormBuilder::attributes.send_email.email_help',
-                            ]
+                            ],
                         ],
                         'subject' => [
                             'type' => 'text',
@@ -53,7 +53,7 @@ return [
                             'required' => true,
                             'validation' => 'required',
                             'value' => null,
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                         'body' => [
                             'type' => 'textarea',
@@ -63,9 +63,9 @@ return [
                             'value' => null,
                             'attributes' => [
                                 'help_text' => 'FormBuilder::attributes.send_email.body_help',
-                            ]
+                            ],
                         ],
-                    ]
+                    ],
                 ],
                 'api' => [
                     'name' => 'FormBuilder::labels.form.action.call_api',
@@ -78,7 +78,7 @@ return [
                             'required' => true,
                             'validation' => 'required',
                             'value' => null,
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                         'method' => [
                             'type' => 'select',
@@ -90,7 +90,7 @@ return [
                                 'POST' => 'POST',
                                 'GET' => 'GET',
                             ],
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                         'body' => [
                             'type' => 'textarea',
@@ -100,7 +100,7 @@ return [
                             'value' => null,
                             'attributes' => [
                                 'help_text' => 'FormBuilder::attributes.call_api.body_help',
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -116,9 +116,9 @@ return [
                             'validation' => null,
                             'value' => null,
                             'attributes' => [
-                                'help_text' => 'FormBuilder::attributes.store_in_database.database_help'
-                            ]
-                        ]
+                                'help_text' => 'FormBuilder::attributes.store_in_database.database_help',
+                            ],
+                        ],
                     ],
                 ],
                 'aweber' => [
@@ -134,8 +134,8 @@ return [
                             'value' => null,
                             'options' => 'return \Corals\Modules\FormBuilder\Classes\Aweber::lists();',
                             'attributes' => [
-                                'help_text' => ''
-                            ]
+                                'help_text' => '',
+                            ],
                         ],
                         'email_field' => [
                             'type' => 'text',
@@ -143,7 +143,7 @@ return [
                             'required' => true,
                             'validation' => 'required',
                             'value' => null,
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                         'name_field' => [
                             'type' => 'text',
@@ -151,7 +151,7 @@ return [
                             'required' => true,
                             'validation' => 'required',
                             'value' => null,
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                     ],
                     'settings' => [
@@ -162,8 +162,8 @@ return [
                             'validation' => null,
                             'value' => null,
                             'attributes' => [
-                                'help_text' => ''
-                            ]
+                                'help_text' => '',
+                            ],
                         ],
                         'consumer_secret' => [
                             'type' => 'text',
@@ -172,8 +172,8 @@ return [
                             'validation' => '',
                             'value' => null,
                             'attributes' => [
-                                'help_text' => ''
-                            ]
+                                'help_text' => '',
+                            ],
                         ],
                         'access_key' => [
                             'type' => 'text',
@@ -182,8 +182,8 @@ return [
                             'validation' => null,
                             'value' => null,
                             'attributes' => [
-                                'help_text' => ''
-                            ]
+                                'help_text' => '',
+                            ],
                         ],
                         'access_secret' => [
                             'type' => 'text',
@@ -192,8 +192,8 @@ return [
                             'validation' => null,
                             'value' => null,
                             'attributes' => [
-                                'help_text' => ''
-                            ]
+                                'help_text' => '',
+                            ],
                         ],
                     ],
                 ],
@@ -210,8 +210,8 @@ return [
                             'value' => null,
                             'options' => 'return \Corals\Modules\FormBuilder\Classes\Mailchimp::lists();',
                             'attributes' => [
-                                'help_text' => ''
-                            ]
+                                'help_text' => '',
+                            ],
                         ],
                         'email_field' => [
                             'type' => 'text',
@@ -219,7 +219,7 @@ return [
                             'required' => true,
                             'validation' => 'required',
                             'value' => null,
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                         'name_field' => [
                             'type' => 'text',
@@ -227,7 +227,7 @@ return [
                             'required' => true,
                             'validation' => 'required',
                             'value' => null,
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                     ],
                     'settings' => [
@@ -238,9 +238,9 @@ return [
                             'validation' => null,
                             'value' => null,
                             'attributes' => [
-                                'help_text' => ''
-                            ]
-                        ]
+                                'help_text' => '',
+                            ],
+                        ],
                     ],
                 ],
                 'get_response' => [
@@ -256,8 +256,8 @@ return [
                             'value' => null,
                             'options' => 'return \Corals\Modules\FormBuilder\Classes\GetResponse::lists();',
                             'attributes' => [
-                                'help_text' => ''
-                            ]
+                                'help_text' => '',
+                            ],
                         ],
                         'email_field' => [
                             'type' => 'text',
@@ -265,7 +265,7 @@ return [
                             'required' => true,
                             'validation' => 'required',
                             'value' => null,
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                         'name_field' => [
                             'type' => 'text',
@@ -273,7 +273,7 @@ return [
                             'required' => true,
                             'validation' => 'required',
                             'value' => null,
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                     ],
                     'settings' => [
@@ -284,8 +284,8 @@ return [
                             'validation' => null,
                             'value' => null,
                             'attributes' => [
-                                'help_text' => ''
-                            ]
+                                'help_text' => '',
+                            ],
                         ],
                         'api_url' => [
                             'type' => 'text',
@@ -294,8 +294,8 @@ return [
                             'validation' => null,
                             'value' => null,
                             'attributes' => [
-                                'help_text' => ''
-                            ]
+                                'help_text' => '',
+                            ],
                         ],
                     ],
                 ],
@@ -312,8 +312,8 @@ return [
                             'value' => null,
                             'options' => 'return \Corals\Modules\FormBuilder\Classes\CovertCommissions::lists();',
                             'attributes' => [
-                                'help_text' => ''
-                            ]
+                                'help_text' => '',
+                            ],
                         ],
                         'email_field' => [
                             'type' => 'text',
@@ -321,7 +321,7 @@ return [
                             'required' => true,
                             'validation' => 'required',
                             'value' => null,
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                         'name_field' => [
                             'type' => 'text',
@@ -329,7 +329,7 @@ return [
                             'required' => true,
                             'validation' => 'required',
                             'value' => null,
-                            'attributes' => []
+                            'attributes' => [],
                         ],
                     ],
                     'settings' => [
@@ -340,12 +340,12 @@ return [
                             'validation' => null,
                             'value' => null,
                             'attributes' => [
-                                'help_text' => ''
-                            ]
-                        ]
+                                'help_text' => '',
+                            ],
+                        ],
                     ],
                 ],
-            ]
+            ],
         ],
     ],
     'locale_mapping' => [
@@ -364,5 +364,5 @@ return [
         "tr" => "tr-TR",
         "vi" => "vi-VN",
         "zh" => "zh-CN",
-    ]
+    ],
 ];

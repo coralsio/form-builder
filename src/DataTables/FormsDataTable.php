@@ -47,12 +47,12 @@ class FormsDataTable extends BaseDataTable
             'blade_short_code' => [
                 'title' => trans('FormBuilder::attributes.form.blade_short_code'),
                 'searchable' => false,
-                'orderable' => false
+                'orderable' => false,
             ],
             'content_short_code' => [
                 'title' => trans('FormBuilder::attributes.form.content_short_code'),
                 'searchable' => false,
-                'orderable' => false
+                'orderable' => false,
             ],
             'status' => ['title' => trans('Corals::attributes.status')],
             'is_public' => ['title' => trans('FormBuilder::attributes.form.is_public')],

@@ -46,15 +46,16 @@ class FormSubmissionsController extends BaseController
      */
     public function show(FormSubmissionRequest $request, Form $form, FormSubmission $formSubmission)
     {
-
         $form_inputs = collect(\FormBuilder::getFormFieldsLabel($form));
         $formSubmission_content = $formSubmission->content;
         $form_data = $form_inputs->mapWithKeys(function ($item) use ($form_inputs, $formSubmission_content) {
             $value = \Arr::get($formSubmission_content, array_search($item, $form_inputs->toArray()), '-');
+
             return [array_search($item, $form_inputs->toArray()) => $value];
         });
         $form_data = $form_data->toArray();
         $this->setViewSharedData(['title_singular' => trans('Corals::labels.show_title', ['title' => $form->name . " - " . $formSubmission->id])]);
+
         return view('FormBuilder::submissions.show')->with(compact('form_data', 'form_inputs'));
     }
 

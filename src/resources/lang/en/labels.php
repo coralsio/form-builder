@@ -4,7 +4,7 @@ return [
     'aweber' => 'Click here to authorize Aweber access first',
 
     'request' => [
-        'you_miss_add_action' => 'You missed add actions to the form'
+        'you_miss_add_action' => 'You missed add actions to the form',
     ],
     'form' => [
         'no_setting_found' => 'No settings found.',
@@ -14,7 +14,7 @@ return [
             'submission' => 'Submission',
         ],
         'show' => [
-            'render_form' => 'Rendered Form'
+            'render_form' => 'Rendered Form',
         ],
         'action' => [
             'preview' => '<i class="fa fa-eye"></i> Preview',
@@ -37,11 +37,11 @@ return [
             'on_failure' => 'On Failure',
             'content_add_value_url' => 'Content: Add valid url if you select "Redirect To" option. Otherwise enter the message
                                 that will
-                                appear for the end user.'
+                                appear for the end user.',
         ],
         'builder' => [
             'form_can_not_found' => 'Form [:code] Cannot be found',
-        ]
-    ]
+        ],
+    ],
 
 ];

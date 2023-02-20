@@ -34,12 +34,13 @@ class FormsController extends BaseController
     {
         $action = \Arr::get(config('form_builder.models.form.form_actions'), $key, null);
 
-        if (!$action) {
+        if (! $action) {
             abort(404);
         }
 
         try {
             $view = view('FormBuilder::forms.action_template')->with(compact('action', 'key'))->render();
+
             return $view;
         } catch (\Exception $exception) {
             log_exception($exception, Form::class, 'ActionTemplate');
@@ -120,6 +121,7 @@ class FormsController extends BaseController
     {
         $this->setViewSharedData(['title_singular' => trans('Corals::labels.show_title', ['title' => $form->name])]);
         $this->setViewSharedData(['edit_url' => $this->resource_url . '/' . $form->hashed_id . '/edit']);
+
         return view('FormBuilder::forms.show')->with(compact('form'));
     }
 
@@ -236,7 +238,6 @@ class FormsController extends BaseController
         return view('layouts.embed')->with(compact('view', 'view_variables'))->render();
     }
 
-
     public function settings(Request $request)
     {
         $this->setViewSharedData(['title_singular' => trans('FormBuilder::module.form.setting')]);
@@ -248,11 +249,10 @@ class FormsController extends BaseController
             if (isset($action['settings'])) {
                 if (user()->hasPermissionTo('FormBuilder::form.action_' . $key)) {
                     $settings['form_builder_' . $key] = ['name' => $action['name'], 'settings' => $action['settings']];
-
                 }
-
             }
         }
+
         return view('FormBuilder::forms.settings')->with(compact('settings'));
     }
 

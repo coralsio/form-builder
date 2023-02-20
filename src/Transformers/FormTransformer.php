@@ -32,7 +32,7 @@ class FormTransformer extends BaseTransformer
             'content_short_code' => $this->getShortcode($form, true),
             'created_at' => format_date($form->created_at),
             'updated_at' => format_date($form->updated_at),
-            'action' => $this->actions($form)
+            'action' => $this->actions($form),
         ];
 
         return parent::transformResponse($transformedArray);

@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class AutoResponderController extends BaseController
 {
-
     public function __construct()
     {
         $this->resource_url = config('form_builder.models.form.resource_url');
@@ -36,14 +35,15 @@ class AutoResponderController extends BaseController
                 \Settings::set('form_builder_aweber_access_secret', $access->secret, 'FormBuilder');
 
                 flash(trans('FormBuilder::exception.auto_responder.aweber_authorized_success'))->success();
+
                 return redirect($this->resource_url);
             } catch (\Exception $e) {
                 throw new \Exception($e->getMessage());
 
-                flash(trans('FormBuilder::exception.auto_responder.error_occurred_aweber',['message' => $e->getMessage() ]))->error();
+                flash(trans('FormBuilder::exception.auto_responder.error_occurred_aweber', ['message' => $e->getMessage() ]))->error();
+
                 return redirect($this->resource_url);
             }
         }
     }
-
 }
