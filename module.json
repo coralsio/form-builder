@@ -1,0 +1,20 @@
+{
+    "code": "corals-form-builder",
+    "name": "Form Builder",
+    "author": "Corals",
+    "type": "module",
+    "description": "Form Builder Package",
+    "namespace": "Corals\\Modules\\FormBuilder\\",
+    "provider": "FormBuilderServiceProvider",
+    "version": "5.0.1",
+    "load_order": "10",
+    "folder": "FormBuilder",
+    "autoload": "psr-4",
+    "icon": "fa fa-pencil-square-o",
+    "require": {
+        "corals-foundation": "^6.0",
+        "corals-settings": "^5.0"
+    },
+    "platform": "FormBuilder",
+    "supported_platforms": []
+}

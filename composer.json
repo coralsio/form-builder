@@ -1,0 +1,50 @@
+{
+    "name": "corals/form-builder",
+    "description": "Form Builder",
+    "keywords": [
+        "Form",
+        "Builder"
+    ],
+    "homepage": "https://github.com/coralsio/form-builder",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "corals",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Corals\\Modules\\FormBuilder\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9",
+        "laravel/pint": "^1.0"
+    },
+    "require": {
+        "aweber/aweber": "^1.1",
+        "nztim/mailchimp": "^3.7"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Corals\\Modules\\FormBuilder\\FormBuilderServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
