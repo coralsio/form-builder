@@ -13,12 +13,12 @@ return [
     'form_submission' => [
         'title' => 'تقديمات النموذج',
         'title_singular' => 'تقديم النموذج',
-        'name' => '[:name] تسليم'
+        'name' => '[:name] تسليم',
     ],
     'form_setting' => [
         'title' => 'الاعدادات',
     ],
     'form_builder' => [
-        'title' => 'نشئ نموذج'
-    ]
+        'title' => 'نشئ نموذج',
+    ],
 ];

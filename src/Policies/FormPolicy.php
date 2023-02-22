@@ -3,8 +3,8 @@
 namespace Corals\Modules\FormBuilder\Policies;
 
 use Corals\Foundation\Policies\BasePolicy;
-use Corals\User\Models\User;
 use Corals\Modules\FormBuilder\Models\Form;
+use Corals\User\Models\User;
 
 class FormPolicy extends BasePolicy
 {
@@ -19,6 +19,7 @@ class FormPolicy extends BasePolicy
         if ($user->can('FormBuilder::form.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -41,6 +42,7 @@ class FormPolicy extends BasePolicy
         if ($user->can('FormBuilder::form.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -54,6 +56,7 @@ class FormPolicy extends BasePolicy
         if ($user->can('FormBuilder::form.delete')) {
             return true;
         }
+
         return false;
     }
 
@@ -66,5 +69,4 @@ class FormPolicy extends BasePolicy
     {
         return \Arr::has($form->actions, 'database');
     }
-
 }

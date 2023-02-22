@@ -3,7 +3,7 @@
 
 return [
     'convert' => [
-        'error_occurred' => 'حدث خطأ'
+        'error_occurred' => 'حدث خطأ',
     ],
     'form_builder' => [
         'something_went_wrong' => 'هناك خطأ ما!',
@@ -13,7 +13,7 @@ return [
     'auto_responder' => [
         'aweber_authorized_success' => 'وقد أذن تطبيق Aweber بنجاح',
         'error_occurred_aweber' => 'حدث خطأ في تصريح تطبيق Aweber :message',
-    ]
+    ],
 
 
 ];

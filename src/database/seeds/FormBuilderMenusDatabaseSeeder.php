@@ -23,11 +23,12 @@ class FormBuilderMenusDatabaseSeeder extends Seeder
             'icon' => 'fa fa-pencil-square-o',
             'target' => null,
             'roles' => '["1"]',
-            'order' => 0
+            'order' => 0,
         ]);
 
         // seed users children menu
-        \DB::table('menus')->insert([
+        \DB::table('menus')->insert(
+            [
                 [
                     'parent_id' => $builder_menu_id,
                     'key' => null,
@@ -38,13 +39,14 @@ class FormBuilderMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-list-alt',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
             ]
         );
 
         // seed users children menu
-        \DB::table('menus')->insert([
+        \DB::table('menus')->insert(
+            [
                 [
                     'parent_id' => $builder_menu_id,
                     'key' => null,
@@ -55,7 +57,7 @@ class FormBuilderMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-cog fa-fw',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
             ]
         );

@@ -4,7 +4,6 @@ namespace Corals\Modules\FormBuilder\Classes;
 
 use AWeberAPI;
 
-
 class Aweber
 {
     /**
@@ -16,8 +15,6 @@ class Aweber
      */
     public static function getAuthorize($oauth_token, $oauth_verifier)
     {
-
-
         $customer_key = \Settings::get('form_builder_aweber_consumer_key');
         $customer_secret = \Settings::get('form_builder_aweber_consumer_secret');
 
@@ -35,8 +32,6 @@ class Aweber
         $access->secret = $accessTokenSecret;
 
         return $access;
-
-
     }
 
     /**
@@ -46,11 +41,9 @@ class Aweber
      * @param $name
      * @return bool
      */
-    public static function subscribe( $email,$name, $list_name)
+    public static function subscribe($email, $name, $list_name)
     {
-
         try {
-
             $aweber = self::make();
             $access_key = \Settings::get('form_builder_aweber_access_key');
             $access_secret = \Settings::get('form_builder_aweber_access_secret');
@@ -59,20 +52,16 @@ class Aweber
             $account = $aweber->getAccount($access_key, $access_secret);
 
 
-            $lists = $account->lists->find(array('name' => $list_name));
+            $lists = $account->lists->find(['name' => $list_name]);
             $list = $lists[0];
 
-            $new_subscriber = $list->subscribers->create(array(
+            $new_subscriber = $list->subscribers->create([
                 'name' => $name,
-                'email' => $email
-            ));
-
+                'email' => $email,
+            ]);
         } catch (\Exception $e) {
-
             return false;
-
         }
-
     }
 
     //make instance of AWeber
@@ -88,8 +77,8 @@ class Aweber
     {
         $customer_key = \Settings::get('form_builder_aweber_consumer_key');
         $customer_secret = \Settings::get('form_builder_aweber_consumer_secret');
-        return $aweber = new AWeberAPI($customer_key, $customer_secret);
 
+        return $aweber = new AWeberAPI($customer_key, $customer_secret);
     }
 
     /**
@@ -100,14 +89,13 @@ class Aweber
      */
     public static function lists()
     {
-
         try {
             $access_key = \Settings::get('form_builder_aweber_access_key');
             $access_secret = \Settings::get('form_builder_aweber_access_secret');
 
             $aweber = self::make();
 
-            if (!$access_key || !$access_secret) {
+            if (! $access_key || ! $access_secret) {
                 $callbackUrl = route('aweber.authorize');
 
                 //save request token on cookies
@@ -118,13 +106,12 @@ class Aweber
                 echo \CoralsForm::link($authorizeUrl, '<b>'.trans('FormBuilder::labels.aweber').'</b>', [
                     'class' => 'btn btn-danger m-b-10', 'target' => '_blank', 'style' => 'width:100%']);
                 echo "<br>";
-
             } else {
                 $account = $aweber->getAccount($access_key, $access_secret);
 
                 $lists = $account->lists->data['entries'];
 
-                $lists_names = array();
+                $lists_names = [];
 
                 foreach ($lists as $list) {
                     $lists_names[$list['name']] = $list['name'];
@@ -132,12 +119,8 @@ class Aweber
 
                 return $lists_names;
             }
-
-
         } catch (\Exception $e) {
             echo '<label class="label label-danger text-center pull-left p-t-5 p-b-5" style="width: 100%">'.$e->getMessage().'</label> ';
         }
     }
-
-
 }

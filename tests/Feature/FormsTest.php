@@ -29,7 +29,9 @@ class FormsTest extends TestCase
         $actions = ['show_message', 'redirect_to'];
         $action = array_rand($actions);
         $code = uniqid('form-');
-        $response = $this->post('form-builder/forms', [
+        $response = $this->post(
+            'form-builder/forms',
+            [
                 "name" => 'form',
                 "short_code" => $code,
                 "status" => "active",
@@ -39,21 +41,21 @@ class FormsTest extends TestCase
                         "NqYCd7" => [
                             "to" => "action_form@gmail.com",
                             "subject" => "email",
-                            "body" => "email"
-                        ]
-                    ]
+                            "body" => "email",
+                        ],
+                    ],
                 ],
                 "submission" => [
                     "on_success" => [
                         "action" => $actions[$action],
-                        "content" => "on success"
+                        "content" => "on success",
                     ],
                     "on_failure" => [
                         "action" => $actions[$action],
-                        "content" => "on failure"
-                    ]
+                        "content" => "on failure",
+                    ],
                 ],
-                "is_public" => false
+                "is_public" => false,
             ]
         );
 
@@ -107,21 +109,21 @@ class FormsTest extends TestCase
                          [
                             "to" => "action_form@gmail.com",
                             "subject" => "email",
-                            "body" => "email"
-                        ]
-                    ]
+                            "body" => "email",
+                        ],
+                    ],
                 ],
                 "submission" => [
                     "on_success" => [
                         "action" => $actions[$action],
-                        "content" => "on success"
+                        "content" => "on success",
                     ],
                     "on_failure" => [
                         "action" => $actions[$action],
-                        "content" => "on failure"
-                    ]
+                        "content" => "on failure",
+                    ],
                 ],
-                "is_public" => false
+                "is_public" => false,
             ]);
 
             $response->assertRedirect('form-builder/forms');

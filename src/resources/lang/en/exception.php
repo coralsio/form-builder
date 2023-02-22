@@ -3,7 +3,7 @@
 
 return [
     'convert' => [
-        'error_occurred' => 'An Error Occurred'
+        'error_occurred' => 'An Error Occurred',
     ],
     'form_builder' => [
         'something_went_wrong' => 'Something went wrong!',
@@ -13,5 +13,5 @@ return [
     'auto_responder' => [
         'aweber_authorized_success' => 'Aweber Application has been authorized successfully',
         'error_occurred_aweber' => 'An Error occured with Aweber app authorization :message',
-    ]
+    ],
 ];

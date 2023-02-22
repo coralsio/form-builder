@@ -8,7 +8,6 @@ use Ctct\Exceptions\CtctException;
 
 class ConstantContact
 {
-
     /**
      * Subscribe user
      *
@@ -18,7 +17,6 @@ class ConstantContact
      */
     public static function subscribe($email, $name, $list_id)
     {
-
         try {
             $api_key = \Settings::get('form_builder_constant_contact_api_key');
             $api_secret = \Settings::get('form_builder_constant_contact_api_secret');
@@ -27,7 +25,7 @@ class ConstantContact
             $cc = new ConstantContactLib($api_key);
 
             // check to see if a contact with the email address already exists in the account
-            $response = $cc->contactService->getContacts($api_secret, array("email" => $email));
+            $response = $cc->contactService->getContacts($api_secret, ["email" => $email]);
             // create a new contact if one does not exist
             if (empty($response->results)) {
                 $action = "Creating Contact";
@@ -42,8 +40,8 @@ class ConstantContact
                  *
                  * See: http://developer.constantcontact.com/docs/contacts-api/contacts-index.html#opt_in
                  */
-                $returnContact = $cc->contactService->addContact($api_secret, $contact,'ACTION_BY_OWNER');
-                // update the existing contact if address already existed
+                $returnContact = $cc->contactService->addContact($api_secret, $contact, 'ACTION_BY_OWNER');
+            // update the existing contact if address already existed
             } else {
                 $action = "Updating Contact";
                 $contact = $response->results[0];
@@ -57,17 +55,13 @@ class ConstantContact
                      *
                      * See: http://developer.constantcontact.com/docs/contacts-api/contacts-index.html#opt_in
                      */
-                    $returnContact = $cc->contactService->updateContact($api_secret, $contact,'ACTION_BY_OWNER');
+                    $returnContact = $cc->contactService->updateContact($api_secret, $contact, 'ACTION_BY_OWNER');
                 }
             }
         } catch (\Exception $e) {
-
             throw new \Exception($e->getMessage());
         } // catch any exceptions thrown during the process and print the errors to screen
-
-
     }
-
 
     /**
      * Returns list of subscribers lists of account
@@ -75,10 +69,8 @@ class ConstantContact
      * @return array
      * @throws \Exception
      */
-    public
-    static function lists()
+    public static function lists()
     {
-
         try {
             $api_key = \Settings::get('form_builder_constant_contact_api_key');
             $api_secret = \Settings::get('form_builder_constant_contact_api_secret');
@@ -92,8 +84,8 @@ class ConstantContact
             foreach ($lists as $list_item) {
                 $list_array[$list_item->id] = $list_item->name;
             }
-            return $list_array;
 
+            return $list_array;
         } catch (CtctException $exception) {
             $error_message = "";
             foreach ($exception->getErrors() as $error) {
@@ -101,9 +93,6 @@ class ConstantContact
             }
             echo '<label  class="label label-danger text-center pull-left p-t-5 p-b-5" style="width: 100%">' . $error_message . '</label> ';
             log_exception($exception, 'MailChimpGetLists', 'subscribe');
-
         }
     }
-
-
 }

@@ -2,12 +2,10 @@
 
 namespace Corals\Modules\FormBuilder\Classes;
 
-
 use GuzzleHttp\TransferStats;
 
 class CovertCommissions
 {
-
     /**
      * Subscribe user
      *
@@ -17,7 +15,6 @@ class CovertCommissions
      */
     public static function subscribe($email, $name, $list_id)
     {
-
         try {
             $api_key = \Settings::get('form_builder_mailchimp_api_key');
             list($meta_web_form_id, $listname) = explode('|', $list_id);
@@ -34,26 +31,22 @@ class CovertCommissions
                 'meta_required' => 'email,name',
                 'email' => $email,
                 'name' => $name,
-                'submit' => 'Subscribe'
+                'submit' => 'Subscribe',
 
             ];
             $res = $client->request('POST', 'http://www.aweber.com/scripts/addlead.pl', [
                 'form_params' => $fields,
                 'on_stats' => function (TransferStats $stats) use (&$url) {
                     $url = $stats->getEffectiveUri();
-                }
+                },
             ]);
-            if($res->getStatusCode() != 200){
+            if ($res->getStatusCode() != 200) {
                 throw new \Exception(trans('FormBuilder::exception.convert.error_occurred'));
             }
-
         } catch (\Exception $e) {
-
             throw new \Exception($e->getMessage());
         }
-
     }
-
 
     /**
      * Returns list of subscribers lists of account
@@ -63,7 +56,6 @@ class CovertCommissions
      */
     public static function lists()
     {
-
         try {
             $api_key = \Settings::get('form_builder_covert_commissions_api_key');
 
@@ -78,13 +70,9 @@ class CovertCommissions
             }
 
             return $list_array;
-
         } catch (\Exception $exception) {
             echo '<label  class="label label-danger text-center pull-left p-t-5 p-b-5" style="width: 100%">' . $exception->getMessage() . '</label> ';
             log_exception($exception, 'MailChimpGetLists', 'subscribe');
-
         }
     }
-
-
 }

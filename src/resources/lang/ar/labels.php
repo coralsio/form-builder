@@ -5,7 +5,7 @@ return [
     'aweber' => 'انقر هنا لتفويض دخول Aweber أولاً',
 
     'request' => [
-        'you_miss_add_action' => 'لقد فاتتك إضافة إجراءات إلى النموذج'
+        'you_miss_add_action' => 'لقد فاتتك إضافة إجراءات إلى النموذج',
     ],
     'form' => [
         'no_setting_found' => 'لم يتم العثور على إعدادات.',
@@ -15,7 +15,7 @@ return [
             'submission' => 'تسليم',
         ],
         'show' => [
-            'render_form' => 'نموذج مقدم'
+            'render_form' => 'نموذج مقدم',
         ],
         'action' => [
             'preview' => '<i class="fa fa-eye"></i> معاينة',
@@ -36,11 +36,11 @@ return [
             'on_success' => 'على النجاح',
             'on_failure' => 'عند الفشل',
             'content_add_value_url' => 'المحتوى: أضف عنوان url صالحًا إذا حددت خيار "Redirect To". خلاف ذلك أدخل الرسالة ذلك سوف
-تظهر للمستخدم النهائي                                       '
+تظهر للمستخدم النهائي                                       ',
         ],
         'builder' => [
             'form_can_not_found' => 'النموذج [:code] لا يمكن ايجاده ',
-        ]
-    ]
+        ],
+    ],
 
 ];

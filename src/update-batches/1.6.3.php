@@ -1,9 +1,9 @@
 <?php
 
-use \Carbon\Carbon;
-use \Spatie\Permission\PermissionRegistrar;
-try {
+use Carbon\Carbon;
+use Spatie\Permission\PermissionRegistrar;
 
+try {
     \DB::table('permissions')->insert([
         [
             'name' => 'FormBuilder::form.action_email',
@@ -55,11 +55,6 @@ try {
         ],
     ]);
     app(PermissionRegistrar::class)->forgetCachedPermissions();
-
-
 } catch (\Exception $exception) {
     log_exception($exception);
 }
-
-
-?>

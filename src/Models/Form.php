@@ -10,7 +10,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Form extends BaseModel
 {
-    use PresentableTrait, LogsActivity, ModelPropertiesTrait;
+    use PresentableTrait;
+    use LogsActivity;
+    use ModelPropertiesTrait;
 
     protected static function boot()
     {

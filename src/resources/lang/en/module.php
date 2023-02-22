@@ -13,12 +13,12 @@ return [
     'form_submission' => [
         'title' => 'Form Submissions',
         'title_singular' => 'Form Submission',
-        'name' => '[:name] Submissions'
+        'name' => '[:name] Submissions',
     ],
     'form_setting' => [
         'title' => 'Settings',
     ],
     'form_builder' => [
-        'title' => 'Form Builder'
-    ]
+        'title' => 'Form Builder',
+    ],
 ];

@@ -49,15 +49,15 @@ class FormRequest extends BaseRequest
                 //$request_action_key: email, api, database...
                 $action_definition = \Arr::get($actions_definition, $request_action_key, null);
 
-                if (!$action_definition) {
+                if (! $action_definition) {
                     continue;
                 }
 
                 foreach ($actions as $key => $fields) {
                     foreach ($fields as $field_key => $field) {
-                        if (!empty($action_definition['fields'][$field_key]['validation'])) {
+                        if (! empty($action_definition['fields'][$field_key]['validation'])) {
                             $rules = array_merge($rules, [
-                                "form_actions.$request_action_key.$key.$field_key" => $action_definition['fields'][$field_key]['validation']
+                                "form_actions.$request_action_key.$key.$field_key" => $action_definition['fields'][$field_key]['validation'],
                             ]);
                         }
                     }
@@ -67,14 +67,14 @@ class FormRequest extends BaseRequest
 
         if ($this->isStore()) {
             $rules = array_merge($rules, [
-                'short_code' => 'required|max:191|unique:forms,short_code'
+                'short_code' => 'required|max:191|unique:forms,short_code',
             ]);
         }
 
         if ($this->isUpdate()) {
             $form = $this->route('form');
             $rules = array_merge($rules, [
-                'short_code' => 'required|max:191|unique:forms,short_code,' . $form->id
+                'short_code' => 'required|max:191|unique:forms,short_code,' . $form->id,
             ]);
         }
 
@@ -93,7 +93,7 @@ class FormRequest extends BaseRequest
             //$request_action_key: email, api, database...
             $action_definition = \Arr::get($actions_definition, $request_action_key, null);
 
-            if (!$action_definition) {
+            if (! $action_definition) {
                 continue;
             }
 

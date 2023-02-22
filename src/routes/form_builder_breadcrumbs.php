@@ -24,7 +24,7 @@ Breadcrumbs::register('form_show', function ($breadcrumbs) {
 //Form Submissions
 Breadcrumbs::register('form_submissions', function ($breadcrumbs, $form) {
     $breadcrumbs->parent('forms');
-    $breadcrumbs->push(trans('FormBuilder::module.form_submission.name',['name' => $form->name]), route(config('form_builder.models.form_submission.resource_route'), ['form' => $form->hashed_id]));
+    $breadcrumbs->push(trans('FormBuilder::module.form_submission.name', ['name' => $form->name]), route(config('form_builder.models.form_submission.resource_route'), ['form' => $form->hashed_id]));
 });
 
 Breadcrumbs::register('form_submission_show', function ($breadcrumbs, $form) {

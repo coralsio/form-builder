@@ -8,9 +8,9 @@ use Corals\User\Models\User;
 
 class FormSubmissionPolicy extends BasePolicy
 {
-
     protected $administrationPermission = 'Administrations::admin.formbuilder';
     protected $skippedAbilities = ['create'];
+
     /**
      * @param User $user
      * @return bool
@@ -20,6 +20,7 @@ class FormSubmissionPolicy extends BasePolicy
         if ($user->can('FormBuilder::form_submission.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -42,6 +43,7 @@ class FormSubmissionPolicy extends BasePolicy
         if ($user->can('FormBuilder::form_submission.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -55,7 +57,7 @@ class FormSubmissionPolicy extends BasePolicy
         if ($user->can('FormBuilder::form_submission.delete')) {
             return true;
         }
+
         return false;
     }
-
 }
