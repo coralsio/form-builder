@@ -2,6 +2,7 @@
 
 namespace Corals\Modules\FormBuilder;
 
+use Corals\Foundation\Providers\BasePackageServiceProvider;
 use Corals\Modules\FormBuilder\Facades\FormBuilder;
 use Corals\Modules\FormBuilder\Models\Form;
 use Corals\Modules\FormBuilder\Providers\FormBuilderAuthServiceProvider;
@@ -12,16 +13,23 @@ use Corals\Settings\Facades\Settings;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
-class FormBuilderServiceProvider extends ServiceProvider
+class FormBuilderServiceProvider extends BasePackageServiceProvider
 {
+    /**
+     * @var
+     */
     protected $defer = true;
+    /**
+     * @var
+     */
+    protected $packageCode = 'corals-form-builder';
 
     /**
      * Bootstrap the application events.
      *
      * @return void
      */
-    public function boot()
+    public function bootPackage()
     {
         // Load view
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'FormBuilder');
@@ -34,7 +42,6 @@ class FormBuilderServiceProvider extends ServiceProvider
         $this->registerShortcode();
 
         $this->registerCustomFieldsModels();
-        $this->registerModulesPackages();
     }
 
     /**
@@ -42,7 +49,7 @@ class FormBuilderServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function registerPackage()
     {
         $this->mergeConfigFrom(__DIR__ . '/config/form_builder.php', 'form_builder');
 
@@ -92,7 +99,7 @@ class FormBuilderServiceProvider extends ServiceProvider
         Settings::addCustomFieldModel(Form::class);
     }
 
-    protected function registerModulesPackages()
+    public function registerModulesPackages()
     {
         Modules::addModulesPackages('corals/form-builder');
     }
