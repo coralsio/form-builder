@@ -11,7 +11,6 @@ use Corals\Modules\FormBuilder\Providers\FormBuilderRouteServiceProvider;
 use Corals\Settings\Facades\Modules;
 use Corals\Settings\Facades\Settings;
 use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\ServiceProvider;
 
 class FormBuilderServiceProvider extends BasePackageServiceProvider
 {
