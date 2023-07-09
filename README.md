@@ -8,6 +8,9 @@
 
 ---
 
+This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+
+
 ## Description
 - Laraship FormBuilder is a multi-step Drag & Drop Form creator where you can select fields among 14 different types, then embed the form either on Laraship CMS, or any other external web page, there are many options for customizations form controls like validation, styling, labels.
 
@@ -59,9 +62,6 @@
 
 
 - The form can be also configured with Recaptcha
----
-
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
 
 ## Installation
 
