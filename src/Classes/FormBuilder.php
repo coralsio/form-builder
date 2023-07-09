@@ -349,8 +349,8 @@ class FormBuilder
         }
 
         // Empty response body should be parsed also as and empty array
-//        $responses = $httpResponse->getBody(true);
-//        $jsonToArrayResponse = !empty($responses) ? $httpResponse->json() : array();
+        //        $responses = $httpResponse->getBody(true);
+        //        $jsonToArrayResponse = !empty($responses) ? $httpResponse->json() : array();
     }
 
     /**
