@@ -37,7 +37,7 @@ class FormBuilderServiceProvider extends BasePackageServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/resources/lang', 'FormBuilder');
 
         // Load migrations
-//        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        //        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
         $this->registerShortcode();
 
         $this->registerCustomFieldsModels();
