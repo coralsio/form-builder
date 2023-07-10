@@ -72,8 +72,3 @@ composer require corals/form-builder
 ```bash
 vendor/bin/phpunit vendor/corals/form-builder/tests 
 ```
-
-
-## Credits
-
-- [:author_name](https://github.com/:author_username)
