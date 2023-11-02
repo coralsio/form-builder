@@ -129,7 +129,7 @@
                                 <div class="col-md-12">
                                     {!! CoralsForm::label('add_action','FormBuilder::labels.form.action.add_new_action') !!}
                                     <div class="form-group hidden">
-                                        {!! Form::hidden('form_actions',null) !!}
+                                        {!! CoralsForm::hidden('form_actions',null) !!}
                                     </div>
                                     <br/>
 
