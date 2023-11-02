@@ -41,7 +41,7 @@ class ConstantContact
                  * See: http://developer.constantcontact.com/docs/contacts-api/contacts-index.html#opt_in
                  */
                 $returnContact = $cc->contactService->addContact($api_secret, $contact, 'ACTION_BY_OWNER');
-                // update the existing contact if address already existed
+            // update the existing contact if address already existed
             } else {
                 $action = "Updating Contact";
                 $contact = $response->results[0];
